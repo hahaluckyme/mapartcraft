@@ -802,7 +802,6 @@ class MapSettings extends Component {
         {setting_dithering}
         {setting_dithering_propagation}
         {settingGroup_preprocessing}
-        {settingGroup_extras}
       </div>
     );
     return settingsDiv;

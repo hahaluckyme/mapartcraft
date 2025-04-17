@@ -100,8 +100,8 @@
       "OFF": "Off (2D)",
       "CLASSIC": "On (3D Classic)",
       "VALLEY": "On (3D Valley)",
-      "FULL-DARK": "Full-Dark",
-      "FULL-LIGHT": "Full-Light",
+      "FULL-DARK": "Full-Dark (3D Ramp)",
+      "FULL-LIGHT": "Full-Light (3D Ramp)",
       "ON": "On",
       "ON-UNOBTAINABLE": "On (Unobtainable)",
       "FULL-UNOBTAINABLE": "Full-Unobtainable"
