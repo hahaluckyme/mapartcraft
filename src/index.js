@@ -9,7 +9,7 @@ import "./index.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router basename="/mapartcraft">
+    <Router basename="/">
       <Switch>
         <Route path="/:countryCode?/faq" component={FAQ} />
         <Route path="/:countryCode?" component={Root} />

@@ -2,7 +2,7 @@
   "name": "mapartcraft-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://mms0316.github.io/mapartcraft",
+  "homepage": "/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.5",
@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.26.10",
     "@babel/plugin-transform-private-property-in-object": "^7.24.6",
     "gh-pages": "^5.0.0"
   }
