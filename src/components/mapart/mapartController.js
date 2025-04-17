@@ -37,7 +37,7 @@ class MapartController extends Component {
     optionValue_cropImage_percent_y: 50,
     optionValue_pixelSize: 1,
     optionValue_showGridOverlay: false,
-    optionValue_staircasing: MapModes.SCHEMATIC_NBT.staircaseModes.CLASSIC.uniqueId,
+    optionValue_staircasing: MapModes.SCHEMATIC_NBT.staircaseModes.OFF.uniqueId,
     optionValue_supportBlock: "cobblestone",
     optionValue_transparency: false,
     optionValue_transparencyTolerance: 128,
@@ -48,7 +48,7 @@ class MapartController extends Component {
     optionValue_dithering_propagation_red: 100,
     optionValue_dithering_propagation_green: 100,
     optionValue_dithering_propagation_blue: 100,
-    optionValue_preprocessingEnabled: false,
+    optionValue_preprocessingEnabled: true,
     preProcessingValue_brightness: 90,
     preProcessingValue_contrast: 100,
     preProcessingValue_saturation: 100,
@@ -575,7 +575,7 @@ class MapartController extends Component {
           });
       }
     }
-    return "https://mms0316.github.io/mapartcraft/?preset=" + presetQueryString;
+    return "https://hahaluckyme.github.io/mapartcraft/?preset=" + presetQueryString;
   };
 
   handleSharePreset = () => {

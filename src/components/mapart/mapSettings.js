@@ -744,23 +744,23 @@ class MapSettings extends Component {
       </tr>
     );
     const settingGroup_preprocessing = (
-      <React.Fragment>
-        <details>
-          <summary>{getLocaleString("MAP-SETTINGS/PREPROCESSING/TITLE")}</summary>
-          <div className={optionValue_preprocessingEnabled ? "settingsGroup" : null}>
-            <table>
-              <tbody>
-                {setting_preprocessing}
-                {setting_preprocessing_brightness}
-                {setting_preprocessing_contrast}
-                {setting_preprocessing_saturation}
-                {setting_preprocessing_background}
-                {setting_preprocessing_backgroundColour}
-              </tbody>
-            </table>
-          </div>
-        </details>
-      </React.Fragment>
+      <tr>
+        <b>
+          {getLocaleString("MAP-SETTINGS/PREPROCESSING/TITLE")}
+        </b>
+        <div className={"settingsGroup"}>
+          <table>
+            <tbody>
+              {setting_preprocessing}
+              {setting_preprocessing_brightness}
+              {setting_preprocessing_contrast}
+              {setting_preprocessing_saturation}
+              {setting_preprocessing_background}
+              {setting_preprocessing_backgroundColour}
+            </tbody>
+          </table>
+        </div>
+      </tr>
     );
     const setting_extras_moreStaircasingOptions = (
       <tr>

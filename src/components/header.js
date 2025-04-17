@@ -17,7 +17,7 @@ class Header extends Component {
             {getLocaleString("FAQ/VIDEO-TUTORIAL")}
           </a>
           <span> | </span>
-          <a href="https://github.com/mms0316/mapartcraft" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/hahaluckyme/mapartcraft" target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
           <span> | </span>
