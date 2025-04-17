@@ -42,6 +42,7 @@ class MapPreview extends Component {
       prevProps.optionValue_cropImage_zoom === newProps.optionValue_cropImage_zoom,
       prevProps.optionValue_cropImage_percent_x === newProps.optionValue_cropImage_percent_x,
       prevProps.optionValue_cropImage_percent_y === newProps.optionValue_cropImage_percent_y,
+      prevProps.optionValue_pixelSize === newProps.optionValue_pixelSize,
       prevProps.optionValue_staircasing === newProps.optionValue_staircasing,
       prevProps.optionValue_preprocessingEnabled === newProps.optionValue_preprocessingEnabled,
       prevProps.preProcessingValue_brightness === newProps.preProcessingValue_brightness,
@@ -73,6 +74,7 @@ class MapPreview extends Component {
       prevProps.optionValue_cropImage_zoom === newProps.optionValue_cropImage_zoom,
       prevProps.optionValue_cropImage_percent_x === newProps.optionValue_cropImage_percent_x,
       prevProps.optionValue_cropImage_percent_y === newProps.optionValue_cropImage_percent_y,
+      prevProps.optionValue_pixelSize === newProps.optionValue_pixelSize,
       prevProps.optionValue_staircasing === newProps.optionValue_staircasing,
       prevProps.optionValue_transparency === newProps.optionValue_transparency,
       prevProps.optionValue_transparencyTolerance === newProps.optionValue_transparencyTolerance,
@@ -203,6 +205,7 @@ class MapPreview extends Component {
       optionValue_cropImage_zoom,
       optionValue_cropImage_percent_x,
       optionValue_cropImage_percent_y,
+      optionValue_pixelSize,
     } = this.props;
     const { canvasRef_source } = this;
     const ctx_source = canvasRef_source.current.getContext("2d");
@@ -276,6 +279,28 @@ class MapPreview extends Component {
       default: {
         throw new Error("Unknown optionValue_cropImage");
       }
+    }
+
+    if (optionValue_pixelSize !== 1) {
+      const pixelationFactor = 1 / optionValue_pixelSize;
+      const canvasWidth = ctx_source.canvas.width;
+      const canvasHeight = ctx_source.canvas.height;
+      const smallWidth = Math.floor(canvasWidth * pixelationFactor);
+      const smallHeight = Math.floor(canvasHeight * pixelationFactor);
+
+      ctx_source.imageSmoothingEnabled = false;
+      ctx_source.drawImage(
+          canvasRef_source.current,
+          0, 0, canvasWidth, canvasHeight,
+          0, 0, smallWidth, smallHeight,
+      );
+
+      ctx_source.drawImage(
+          canvasRef_source.current,
+          0, 0, smallWidth, smallHeight,
+          0, 0, canvasWidth, canvasHeight,
+      );
+      ctx_source.imageSmoothingEnabled = true;
     }
   }
 

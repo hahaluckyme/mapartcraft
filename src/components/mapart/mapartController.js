@@ -35,6 +35,7 @@ class MapartController extends Component {
     optionValue_cropImage_zoom: 10, // this gets scaled down by a factor of 10
     optionValue_cropImage_percent_x: 50,
     optionValue_cropImage_percent_y: 50,
+    optionValue_pixelSize: 1,
     optionValue_showGridOverlay: false,
     optionValue_staircasing: MapModes.SCHEMATIC_NBT.staircaseModes.CLASSIC.uniqueId,
     optionValue_supportBlock: "cobblestone",
@@ -269,6 +270,12 @@ class MapartController extends Component {
   onOptionChange_mapSize_y = (value) => {
     this.setState({
       optionValue_mapSize_y: value,
+    });
+  };
+
+  onOptionChange_pixelSize = (value) => {
+    this.setState({
+      optionValue_pixelSize: value,
     });
   };
 
@@ -765,6 +772,7 @@ class MapartController extends Component {
       optionValue_cropImage_percent_x,
       optionValue_cropImage_percent_y,
       optionValue_showGridOverlay,
+      optionValue_pixelSize,
       optionValue_staircasing,
       optionValue_supportBlock,
       optionValue_transparency,
@@ -830,6 +838,7 @@ class MapartController extends Component {
             optionValue_cropImage_percent_x={optionValue_cropImage_percent_x}
             optionValue_cropImage_percent_y={optionValue_cropImage_percent_y}
             optionValue_showGridOverlay={optionValue_showGridOverlay}
+            optionValue_pixelSize={optionValue_pixelSize}
             optionValue_staircasing={optionValue_staircasing}
             optionValue_transparency={optionValue_transparency}
             optionValue_transparencyTolerance={optionValue_transparencyTolerance}
@@ -871,6 +880,8 @@ class MapartController extends Component {
               onOptionChange_cropImage_percent_y={this.onOptionChange_cropImage_percent_y}
               optionValue_showGridOverlay={optionValue_showGridOverlay}
               onOptionChange_showGridOverlay={this.onOptionChange_showGridOverlay}
+              optionValue_pixelSize={optionValue_pixelSize}
+              onOptionChange_pixelSize={this.onOptionChange_pixelSize}
               optionValue_staircasing={optionValue_staircasing}
               onOptionChange_staircasing={this.onOptionChange_staircasing}
               optionValue_supportBlock={optionValue_supportBlock}

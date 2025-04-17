@@ -38,6 +38,8 @@ class MapSettings extends Component {
       onOptionChange_cropImage_percent_y,
       optionValue_showGridOverlay,
       onOptionChange_showGridOverlay,
+      optionValue_pixelSize,
+      onOptionChange_pixelSize,
       optionValue_staircasing,
       onOptionChange_staircasing,
       optionValue_supportBlock,
@@ -251,6 +253,24 @@ class MapSettings extends Component {
           </tbody>
         </table>
       </div>
+    );
+    const setting_pixelSize = (
+      <React.Fragment>
+        <b>
+          {"Pixel size"}
+          {":"}
+        </b>{" "}
+        <BufferedNumberInput
+          min="1"
+          max={null}
+          step="1"
+          value={optionValue_pixelSize}
+          validators={[(t) => !isNaN(t), (t) => t > 0]}
+          onValidInput={onOptionChange_pixelSize}
+          style={{ width: "2em" }}
+        />
+        <br />
+      </React.Fragment>
     );
     const setting_grid = (
       <React.Fragment>
@@ -774,6 +794,7 @@ class MapSettings extends Component {
         {setting_version}
         {setting_mapSize}
         {settingGroup_cropping}
+        {setting_pixelSize}
         {setting_grid}
         {setting_staircasing}
         {settings_mapModeConditional}
