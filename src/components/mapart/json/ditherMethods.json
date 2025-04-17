@@ -1,4 +1,9 @@
 {
+  "None": {
+    "uniqueId": 0,
+    "name": "None",
+    "localeKey": "MAP-SETTINGS/DITHERING/NONE"
+  },
   "Atkinson": {
     "uniqueId": 9,
     "name": "Atkinson Default (/8 sharpen)",
@@ -68,11 +73,6 @@
       [0, 0, 0, 0, 0]
     ],
     "ditherDivisor": 24.0
-  },
-  "None": {
-    "uniqueId": 0,
-    "name": "None",
-    "localeKey": "MAP-SETTINGS/DITHERING/NONE"
   },
   "Bayer44": {
     "uniqueId": 2,

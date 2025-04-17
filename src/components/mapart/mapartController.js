@@ -37,7 +37,7 @@ class MapartController extends Component {
     optionValue_cropImage_percent_y: 50,
     optionValue_showGridOverlay: false,
     optionValue_staircasing: MapModes.SCHEMATIC_NBT.staircaseModes.CLASSIC.uniqueId,
-    optionValue_supportBlock: "light_gray_wool",
+    optionValue_supportBlock: "cobblestone",
     optionValue_transparency: false,
     optionValue_transparencyTolerance: 128,
     optionValue_mapdatFilenameUseId: true,
@@ -48,8 +48,8 @@ class MapartController extends Component {
     optionValue_dithering_propagation_green: 100,
     optionValue_dithering_propagation_blue: 100,
     optionValue_preprocessingEnabled: false,
-    preProcessingValue_brightness: 85,
-    preProcessingValue_contrast: 110,
+    preProcessingValue_brightness: 90,
+    preProcessingValue_contrast: 100,
     preProcessingValue_saturation: 100,
     preProcessingValue_backgroundColourSelect: BackgroundColourModes.OFF.uniqueId,
     preProcessingValue_backgroundColour: "#151515",
@@ -73,9 +73,11 @@ class MapartController extends Component {
     // update default presets to latest version; done via checking for localeString
     CookieManager.init();
     let cookiesPresets_loaded = JSON.parse(CookieManager.touchCookie("mapartcraft_presets", "[]"));
-    let cookiesPresets_updated = DefaultPresets;
+    let cookiesPresets_updated = [];
+    for (const cookiesPreset_default of DefaultPresets) {
+      cookiesPresets_updated.push(cookiesPreset_default);
+    }
     cookiesPresets_loaded = cookiesPresets_loaded.filter(cookiesPreset_loaded => !DefaultPresets.find((defaultPreset) => defaultPreset.name === cookiesPreset_loaded.name));
-
     for (const cookiesPreset_loaded of cookiesPresets_loaded) {
       cookiesPresets_updated.push(cookiesPreset_loaded);
     }
@@ -193,19 +195,23 @@ class MapartController extends Component {
     for (const colourSetId of Object.keys(coloursJSON)) {
       selectedBlocks[colourSetId] = "-1";
     }
-    for (const [int_colourSetId, presetIndex] of setsAndBlocks) {
+    for (const [int_colourSetId, ...presetIndexes] of setsAndBlocks) {
       // we store presetIndex in the cookie, not blockId
       const colourSetId = int_colourSetId.toString();
       if (!(colourSetId in coloursJSON)) {
         continue;
       }
-      const blockIdAndBlock = Object.entries(coloursJSON[colourSetId].blocks).find(([, block]) => block.presetIndex === presetIndex);
-      if (blockIdAndBlock === undefined) {
-        continue;
-      }
-      const blockId = blockIdAndBlock[0];
-      if (Object.keys(coloursJSON[colourSetId].blocks[blockId].validVersions).includes(optionValue_version.MCVersion)) {
-        selectedBlocks[colourSetId] = blockId;
+      // keep testing presets indexes until one succeeds in the current version.
+      for (const presetIndex of presetIndexes) {
+        const blockIdAndBlock = Object.entries(coloursJSON[colourSetId].blocks).find(([, block]) => block.presetIndex === presetIndex);
+        if (blockIdAndBlock === undefined) {
+          continue;
+        }
+        const blockId = blockIdAndBlock[0];
+        if (Object.keys(coloursJSON[colourSetId].blocks[blockId].validVersions).includes(optionValue_version.MCVersion)) {
+          selectedBlocks[colourSetId] = blockId;
+          break;
+        }
       }
     }
     this.setState({
