@@ -6,6 +6,9 @@ A Minecraft mapart schematic and map.dat generator, designed to be feasible for 
 
 MapartCraft is a static website written in ReactJS; running and building requires NPM / Node. Extra scripts in `tools` are written in Python3. `tools/addColoursJSONBlock.py` optionally uses [ImageMagick](https://imagemagick.org/) to manage `src/images/textures.png`.
 
+# Textures
+Add from https://mcasset.cloud/
+
 # Building
 
 1. Acquire packages with `npm install`.

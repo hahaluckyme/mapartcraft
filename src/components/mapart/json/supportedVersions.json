@@ -1,22 +1,50 @@
 {
-  "1_19 fast": {
-    "MCVersion": "1.19 fast",
-    "NBTVersion": 3105
+  "1_12_2": {
+    "MCVersion": "1.12.2",
+    "NBTVersion": 1343
+  },
+  "1_13_2": {
+    "MCVersion": "1.13.2",
+    "NBTVersion": 1631
+  },
+  "1_14_4": {
+    "MCVersion": "1.14.4",
+    "NBTVersion": 1976
+  },
+  "1_15_2": {
+    "MCVersion": "1.15.2",
+    "NBTVersion": 2230
+  },
+  "1_16_5": {
+    "MCVersion": "1.16.5",
+    "NBTVersion": 2586
+  },
+  "1_17_1": {
+    "MCVersion": "1.17.1",
+    "NBTVersion": 2730
+  },
+  "1_18_2": {
+    "MCVersion": "1.18.2",
+    "NBTVersion": 2975
   },
   "1_19": {
     "MCVersion": "1.19",
     "NBTVersion": 3105
   },
-  "1_20 fast": {
-    "MCVersion": "1.20 fast",
-    "NBTVersion": 3463
-  },
   "1_20": {
     "MCVersion": "1.20",
     "NBTVersion": 3463
   },
-  "1_22": {
-    "MCVersion": "1.22",
-    "NBTVersion": 4072
+  "1_21": {
+    "MCVersion": "1.21",
+    "NBTVersion": 3953
+  },
+  "1_21_4": {
+    "MCVersion": "1.21.4",
+    "NBTVersion": 4189
+  },
+  "1_21_5": {
+    "MCVersion": "1.21.5",
+    "NBTVersion": 4325
   }
 }

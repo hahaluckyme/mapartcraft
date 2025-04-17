@@ -19,19 +19,19 @@
         "uniqueId": 2,
         "localeKey": "MAP-SETTINGS/3D/VALLEY",
         "toneKeys": ["dark", "normal", "light"],
-        "extra": true
+        "extra": false
       },
       "FULL_DARK": {
         "uniqueId": 3,
         "localeKey": "MAP-SETTINGS/3D/FULL-DARK",
         "toneKeys": ["dark"],
-        "extra": true
+        "extra": false
       },
       "FULL_LIGHT": {
         "uniqueId": 4,
         "localeKey": "MAP-SETTINGS/3D/FULL-LIGHT",
         "toneKeys": ["light"],
-        "extra": true
+        "extra": false
       }
     }
   },
