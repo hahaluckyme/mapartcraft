@@ -72,17 +72,12 @@ class MapartController extends Component {
     super(props);
     // update default presets to latest version; done via checking for localeString
     CookieManager.init();
-    let cookiesPresets_loaded = JSON.parse(CookieManager.touchCookie("mapartcraft_presets", JSON.stringify(DefaultPresets)));
-    let cookiesPresets_updated = [];
+    let cookiesPresets_loaded = JSON.parse(CookieManager.touchCookie("mapartcraft_presets", "[]"));
+    let cookiesPresets_updated = DefaultPresets;
+    cookiesPresets_loaded = cookiesPresets_loaded.filter(cookiesPreset_loaded => !DefaultPresets.find((defaultPreset) => defaultPreset.name === cookiesPreset_loaded.name));
+
     for (const cookiesPreset_loaded of cookiesPresets_loaded) {
-      let cookiesPreset_updated = undefined;
-      if ("localeKey" in cookiesPreset_loaded) {
-        cookiesPreset_updated = DefaultPresets.find((defaultPreset) => defaultPreset.localeKey === cookiesPreset_loaded.localeKey);
-      }
-      if (cookiesPreset_updated === undefined) {
-        cookiesPreset_updated = cookiesPreset_loaded;
-      }
-      cookiesPresets_updated.push(cookiesPreset_updated);
+      cookiesPresets_updated.push(cookiesPreset_loaded);
     }
     CookieManager.setCookie("mapartcraft_presets", JSON.stringify(cookiesPresets_updated));
     this.state.presets = cookiesPresets_updated;
@@ -498,15 +493,15 @@ class MapartController extends Component {
     }
   };
 
-  canDeletePreset = () => {
+  isDefaultPreset = () => {
     const { selectedPresetName } = this.state;
-    return selectedPresetName !== "None" && !DefaultPresets.find((defaultPreset) => defaultPreset.name === selectedPresetName);
+    return selectedPresetName === "None" || DefaultPresets.find((defaultPreset) => defaultPreset.name === selectedPresetName);
   };
 
   handleDeletePreset = () => {
     const { getLocaleString } = this.props;
     const { presets, selectedPresetName } = this.state;
-    if (!this.canDeletePreset()) return;
+    if (this.isDefaultPreset()) return;
     if (!window.confirm(`${getLocaleString("BLOCK-SELECTION/PRESETS/DELETE-CONFIRM")} ${selectedPresetName}`)) return;
     const presets_new = presets.filter((preset) => preset.name !== selectedPresetName);
     this.setState({
@@ -805,7 +800,7 @@ class MapartController extends Component {
           selectedBlocks={selectedBlocks}
           presets={presets}
           selectedPresetName={selectedPresetName}
-          canDeletePreset={this.canDeletePreset}
+          isDefaultPreset={this.isDefaultPreset}
           onPresetChange={this.handlePresetChange}
           onDeletePreset={this.handleDeletePreset}
           onSavePreset={this.handleSavePreset}

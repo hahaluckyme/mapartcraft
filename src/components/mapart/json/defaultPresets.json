@@ -1,7 +1,6 @@
 [
   {
     "name": "Everything",
-    "localeKey": "BLOCK-SELECTION/PRESETS/EVERYTHING",
     "blocks": [
       [0, 0],
       [1, 0],
@@ -68,7 +67,6 @@
   },
   {
     "name": "Carpets",
-    "localeKey": "BLOCK-SELECTION/PRESETS/CARPETS",
     "blocks": [
       [13, 1],
       [14, 1],
@@ -90,7 +88,6 @@
   },
   {
     "name": "Greyscale",
-    "localeKey": "BLOCK-SELECTION/PRESETS/GREYSCALE",
     "blocks": [
       [2, 0],
       [5, 0],
