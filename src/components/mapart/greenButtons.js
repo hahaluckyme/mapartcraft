@@ -199,7 +199,7 @@ class GreenButtons extends Component {
       optionValue_dithering,
       optionValue_dithering_propagation_red,
       optionValue_dithering_propagation_green,
-      optionValue_dithering_propagation_blue, 
+      optionValue_dithering_propagation_blue,
       optionValue_preprocessingEnabled,
       preProcessingValue_brightness,
       preProcessingValue_contrast,
@@ -356,7 +356,7 @@ class GreenButtons extends Component {
     const buttonsDiv = (
       <div>
         {buttons_mapModeConditional}
-        {button_donate}
+        {/* {button_donate} removed due to closed donation link */}
       </div>
     );
     return buttonsDiv;
