@@ -956,7 +956,8 @@ class MapartController extends Component {
               onGetViewOnlineNBT={this.onGetViewOnlineNBT}
             />
           </div>
-          {optionValue_modeNBTOrMapdat === MapModes.SCHEMATIC_NBT.uniqueId ? (
+        </div>
+        {optionValue_modeNBTOrMapdat === MapModes.SCHEMATIC_NBT.uniqueId ? (
             <Materials
               getLocaleString={getLocaleString}
               coloursJSON={coloursJSON}
@@ -966,7 +967,6 @@ class MapartController extends Component {
               onChangeColourSetBlock={this.handleChangeColourSetBlock}
             />
           ) : null}
-        </div>
         {viewOnline_NBT !== null &&
           (viewOnline_3D ? (
             <ViewOnline3D

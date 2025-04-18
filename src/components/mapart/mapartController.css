@@ -9,6 +9,8 @@
 
 .sectionsPreviewSettingsMaterials {
   flex: 1;
+  position: sticky;
+  top: 0;
 }
 
 .section {

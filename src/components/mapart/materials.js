@@ -133,7 +133,7 @@ class Materials extends Component {
     const counts = Object.fromEntries(
       Object.entries(mergedList.sort((first, second) => second - first))
       .map(([k, v]) => [k, this.formatMaterialCount(v)]));
-      
+
     const NBSP = String.fromCharCode(160); //non-breaking space
     const CRLF = String.fromCharCode(13, 10); //new line
 
