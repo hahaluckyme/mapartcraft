@@ -1,6 +1,8 @@
 Use tool at:
 https://hahaluckyme.github.io/mapartcraft/
 
+forked from mms0316 (a lot of features come from there)
+
 # 1. Better Presets
 ![image](https://github.com/user-attachments/assets/9f8a6c8f-f857-4036-a6a8-167516caf20b)
 
@@ -14,16 +16,13 @@ Also 90% brightness because 2d is only using a [0.86x multiplier](https://minecr
 for bigger pixels, it is easier to place on servers without Litematica
 ![image](https://github.com/user-attachments/assets/773edf33-7ebf-4b9d-bed9-40bae8cf3870)
 
-# 4. More dithering options
-from the mms0316 fork
-
+# 4. More dithering options and sharpness
 ![image](https://github.com/user-attachments/assets/2cf6352b-4521-4e8c-94c6-ea4e88561f86)
 
 # 5. More accurate color spaces
 ![image](https://github.com/user-attachments/assets/e802bfd6-d823-49e8-a5be-606eb79279ad)
 
 # 6. Easily remove blocks from materials list
-from the mms0316 fork
 ![image](https://github.com/user-attachments/assets/b7c5f44d-098d-400b-a980-aa5281391d97)
 
 # 7. Updated to 1.21 -> 1.21.4 -> 1.21.5
