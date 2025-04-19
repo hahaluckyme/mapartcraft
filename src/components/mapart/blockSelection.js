@@ -130,6 +130,8 @@ class BlockSelection extends Component {
       onChangeColourSetBlock,
       onToggleColourTone,
       optionValue_version,
+      optionValue_showOriginalBlocks,
+      onOptionChange_showOriginalBlocks,
       selectedBlocks,
       disabledTones,
       presets,
@@ -144,6 +146,19 @@ class BlockSelection extends Component {
       handleDeleteCustomBlock,
     } = this.props;
     const { lastSelectedCustomBlock } = this.state;
+
+    const setting_showOriginalBlocks = (
+      <React.Fragment>
+        <Tooltip tooltipText={"Also shows all blocks that were in the original mapartcraft (not recommended)"}>
+          <b>
+            {"Include not-recommended original blocks:"}
+          </b>
+        </Tooltip>{" "}
+        <input type="checkbox" checked={optionValue_showOriginalBlocks} onChange={onOptionChange_showOriginalBlocks} />
+        <br />
+      </React.Fragment>
+    );
+
     const presetsManagement = (
       <React.Fragment>
         <h2 id="blockselectiontitle">{getLocaleString("BLOCK-SELECTION/TITLE")}</h2>
@@ -160,6 +175,7 @@ class BlockSelection extends Component {
           ))}
         </select>
         <br />
+        {setting_showOriginalBlocks}
         <button type="button" disabled={isDefaultPreset()} onClick={onDeletePreset}>
           {getLocaleString("BLOCK-SELECTION/PRESETS/DELETE")}
         </button>
@@ -206,6 +222,7 @@ class BlockSelection extends Component {
               <div className={"colourSetBlocks"}>
                 {Object.entries(colourSet.blocks)
                   .filter(([, block]) => Object.keys(block.validVersions).includes(optionValue_version.MCVersion))
+                  .filter(([, block]) => optionValue_showOriginalBlocks || !block.hidden)
                   .map(([blockId, block]) => (
                     <label key={blockId}>
                       <Tooltip tooltipText={block.displayName}>

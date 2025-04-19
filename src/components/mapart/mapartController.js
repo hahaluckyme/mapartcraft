@@ -36,6 +36,7 @@ class MapartController extends Component {
     optionValue_cropImage_percent_x: 50,
     optionValue_cropImage_percent_y: 50,
     optionValue_pixelSize: 1,
+    optionValue_showOriginalBlocks: false,
     optionValue_showGridOverlay: false,
     optionValue_staircasing: MapModes.SCHEMATIC_NBT.staircaseModes.OFF.uniqueId,
     optionValue_supportBlock: "cobblestone",
@@ -314,6 +315,12 @@ class MapartController extends Component {
       optionValue_showGridOverlay: !this.state.optionValue_showGridOverlay,
     });
     // "updatePreviewScale(0)"
+  };
+
+  onOptionChange_showOriginalBlocks = () => {
+    this.setState({
+      optionValue_showOriginalBlocks: !this.state.optionValue_showOriginalBlocks,
+    });
   };
 
   onOptionChange_staircasing = (e) => {
@@ -772,6 +779,7 @@ class MapartController extends Component {
       optionValue_cropImage_percent_x,
       optionValue_cropImage_percent_y,
       optionValue_showGridOverlay,
+      optionValue_showOriginalBlocks,
       optionValue_pixelSize,
       optionValue_staircasing,
       optionValue_supportBlock,
@@ -809,6 +817,7 @@ class MapartController extends Component {
           onChangeColourSetBlock={this.handleChangeColourSetBlock}
           onToggleColourTone={this.handleToggleColourTone}
           optionValue_version={optionValue_version}
+          optionValue_showOriginalBlocks={optionValue_showOriginalBlocks}
           optionValue_modeNBTOrMapdat={optionValue_modeNBTOrMapdat}
           optionValue_staircasing={optionValue_staircasing}
           selectedBlocks={selectedBlocks}
@@ -820,6 +829,7 @@ class MapartController extends Component {
           onSavePreset={this.handleSavePreset}
           onSharePreset={this.handleSharePreset}
           onGetPDNPaletteClicked={this.handleGetPDNPaletteClicked}
+          onOptionChange_showOriginalBlocks={this.onOptionChange_showOriginalBlocks}
           handleAddCustomBlock={this.handleAddCustomBlock}
           handleDeleteCustomBlock={this.handleDeleteCustomBlock}
         />
