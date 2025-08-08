@@ -104,7 +104,9 @@
       "FULL-LIGHT": "Full-Light (3D Ramp)",
       "ON": "On",
       "ON-UNOBTAINABLE": "On (Unobtainable)",
-      "FULL-UNOBTAINABLE": "Full-Unobtainable"
+      "FULL-UNOBTAINABLE": "Full-Unobtainable",
+      "UPWARDS-ONLY": "Half-Light (Upwards Only)",
+      "REVERSE-UPWARDS-ONLY": "Half-Dark (Reverse-Upwards Only)"
     },
     "NBT-SPECIFIC": {
       "WHERE-SUPPORT-BLOCKS": {

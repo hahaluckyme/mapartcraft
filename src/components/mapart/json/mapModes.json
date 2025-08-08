@@ -32,6 +32,18 @@
         "localeKey": "MAP-SETTINGS/3D/FULL-LIGHT",
         "toneKeys": ["light"],
         "extra": false
+      },
+      "REVERSE_UPWARDS_ONLY": {
+        "uniqueId": 12,
+        "localeKey": "MAP-SETTINGS/3D/REVERSE-UPWARDS-ONLY",
+        "toneKeys": ["dark", "normal"],
+        "extra": false
+      },
+      "UPWARDS_ONLY": {
+        "uniqueId": 11,
+        "localeKey": "MAP-SETTINGS/3D/UPWARDS-ONLY",
+        "toneKeys": ["normal", "light"],
+        "extra": false
       }
     }
   },
