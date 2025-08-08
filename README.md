@@ -21,6 +21,8 @@ The default build settings assume the app is being hosted at https://YOUR-SITE-H
 - `basename` in the Router in `src/app.js`
 - The `RewriteRule` in `buildSources/apache/.htaccess` if using Apache
 
+go to http://localhost:3000/mapartcraft
+
 # Usage
 
 Visit [MapartCraft](https://rebane2001.com/mapartcraft) on [rebane2001.com](https://rebane2001.com) or use a mirror on [web.archive.org](https://web.archive.org/web/*/https://rebane2001.com/mapartcraft). However, it is recommended to use the [rebane2001.com](https://rebane2001.com/mapartcraft) site as it is always up to date with new features and bugfixes.

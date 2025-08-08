@@ -6,9 +6,11 @@ export default function NBTWorker (args) {
 // begin variables passed in onmessage
 var coloursJSON;
 var MapModes;
+var WhereSupportBlocksModes;
 var optionValue_version;
 var optionValue_staircasing;
 var optionValue_supportBlock;
+var optionValue_whereSupportBlocks;
 var pixelsData;
 var maps;
 var currentSelectedBlocks;
@@ -420,6 +422,124 @@ class Map_NBT {
       physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight, rowNumber + 1, coloursLayoutBlock.colourSetId));
       // the + 1 is because the noobline offsets everything South one block
 
+      // read docs/supportBlocks.md to know how this works
+      switch (optionValue_whereSupportBlocks) {
+        case WhereSupportBlocksModes.NONE.uniqueId: {
+          break;
+        }
+        case WhereSupportBlocksModes.IMPORTANT.uniqueId: {
+          if (isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock)) {
+            physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
+          }
+          break;
+        }
+        case WhereSupportBlocksModes.ALL_OPTIMIZED.uniqueId: {
+          switch (rowNumber) {
+            case 0: {
+              if (
+                coloursLayoutBlock.tone === "dark" ||
+                (coloursLayoutBlock.tone === "normal" && isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock))
+              ) {
+                // first under-support block
+                physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 1, rowNumber, "NOOBLINE_SCAFFOLD"));
+              }
+              if (coloursLayoutBlock.tone === "dark" && isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock)) {
+                // second under-support block
+                physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 2, rowNumber, "NOOBLINE_SCAFFOLD"));
+              }
+              break;
+            }
+            case 1: {
+              const coloursLayoutBlock_0 = mapColoursLayoutColumn[rowNumber - 1];
+              if (
+                coloursLayoutBlock_0.tone === "light" ||
+                coloursLayoutBlock.tone === "dark" ||
+                isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock_0) ||
+                (coloursLayoutBlock.tone === "normal" && isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock))
+              ) {
+                // first under-support block
+                physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 1, rowNumber, "NOOBLINE_SCAFFOLD"));
+              }
+              if (coloursLayoutBlock.tone === "dark" && isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock)) {
+                // second under-support block
+                physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 2, rowNumber, "NOOBLINE_SCAFFOLD"));
+              }
+              break;
+            }
+            case mapColoursLayoutColumn.length - 1: {
+              // falls through
+              const coloursLayoutBlock_north = mapColoursLayoutColumn[rowNumber - 1];
+              if (
+                coloursLayoutBlock.tone === "light" ||
+                isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock) ||
+                (coloursLayoutBlock.tone === "normal" && isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock_north))
+              ) {
+                // first under-support block
+                physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
+              }
+              if (coloursLayoutBlock.tone === "light" && isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock_north)) {
+                // second under-support block
+                physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
+              }
+            }
+            // eslint-disable-next-line no-fallthrough
+            default: {
+              const coloursLayoutBlock_north = mapColoursLayoutColumn[rowNumber - 2];
+              const coloursLayoutBlock_inQuestion = mapColoursLayoutColumn[rowNumber - 1];
+              if (
+                coloursLayoutBlock_inQuestion.tone === "light" ||
+                coloursLayoutBlock.tone === "dark" ||
+                isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock_inQuestion) ||
+                (coloursLayoutBlock.tone === "normal" && isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock)) ||
+                (coloursLayoutBlock_inQuestion.tone === "normal" && isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock_north))
+              ) {
+                // first under-support block
+                physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 1, rowNumber, "NOOBLINE_SCAFFOLD"));
+              }
+              if (
+                (coloursLayoutBlock.tone === "dark" && isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock)) ||
+                (coloursLayoutBlock_inQuestion.tone === "light" && isSupportBlockMandatoryForColourSetIdAndTone(coloursLayoutBlock_north))
+              ) {
+                // second under-support block
+                physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 2, rowNumber, "NOOBLINE_SCAFFOLD"));
+              }
+              break;
+            }
+          }
+          break;
+        }
+        case WhereSupportBlocksModes.ALL_DOUBLE_OPTIMIZED.uniqueId: {
+          switch (rowNumber) {
+            case 0: {
+              physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 1, rowNumber, "NOOBLINE_SCAFFOLD"));
+              if (coloursLayoutBlock.tone === "dark") {
+                physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 2, rowNumber, "NOOBLINE_SCAFFOLD"));
+              }
+              break;
+            }
+            case mapColoursLayoutColumn.length - 1: {
+              physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 1, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
+              if (coloursLayoutBlock.tone === "light") {
+                physicalColumn.push(this.returnPhysicalBlock(columnNumber, currentHeight - 2, rowNumber + 1, "NOOBLINE_SCAFFOLD"));
+              }
+              // falls through
+            }
+            // eslint-disable-next-line no-fallthrough
+            default: {
+              physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 1, rowNumber, "NOOBLINE_SCAFFOLD"));
+              const coloursLayoutBlock_inQuestion = mapColoursLayoutColumn[rowNumber - 1];
+              if (coloursLayoutBlock_inQuestion.tone === "light" || coloursLayoutBlock.tone === "dark") {
+                physicalColumn.push(this.returnPhysicalBlock(columnNumber, previousHeight - 2, rowNumber, "NOOBLINE_SCAFFOLD"));
+              }
+              break;
+            }
+          }
+          break;
+        }
+        default: {
+          throw new Error("Unknown support-blocks option");
+        }
+      }
     }
 
     // sort in terms of z and y, necessary for determining when a plateau has finished in valley mode, and correct noobline heights in map preview
@@ -708,8 +828,10 @@ function setupColoursLayoutsFromPixelsData() {
 onmessage = (e) => {
   coloursJSON = e.data.body.coloursJSON;
   MapModes = e.data.body.MapModes;
+  WhereSupportBlocksModes = e.data.body.WhereSupportBlocksModes;
   optionValue_version = e.data.body.optionValue_version;
   optionValue_staircasing = e.data.body.optionValue_staircasing;
+  optionValue_whereSupportBlocks = e.data.body.optionValue_whereSupportBlocks;
   optionValue_supportBlock = e.data.body.optionValue_supportBlock;
   pixelsData = e.data.body.pixelsData;
   maps = e.data.body.maps;

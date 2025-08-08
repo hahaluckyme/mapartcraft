@@ -12,6 +12,7 @@ import ColourMethods from "./json/colourMethods.json";
 import DitherMethods from "./json/ditherMethods.json";
 import MapModes from "./json/mapModes.json";
 import SupportedVersions from "./json/supportedVersions.json";
+import WhereSupportBlocksModes from "./json/whereSupportBlocksModes.json";
 
 import "./mapSettings.css";
 
@@ -42,6 +43,8 @@ class MapSettings extends Component {
       onOptionChange_pixelSize,
       optionValue_staircasing,
       onOptionChange_staircasing,
+      optionValue_whereSupportBlocks,
+      onOptionChange_WhereSupportBlocks,
       optionValue_supportBlock,
       setOption_SupportBlock,
       optionValue_transparency,
@@ -310,6 +313,18 @@ class MapSettings extends Component {
     if (optionValue_modeNBTOrMapdat === MapModes.SCHEMATIC_NBT.uniqueId) {
       settings_mapModeConditional = (
         <React.Fragment>
+          <b>
+            {getLocaleString("MAP-SETTINGS/NBT-SPECIFIC/WHERE-SUPPORT-BLOCKS/TITLE")}
+            {":"}
+          </b>{" "}
+          <select value={optionValue_whereSupportBlocks} onChange={onOptionChange_WhereSupportBlocks}>
+            {Object.values(WhereSupportBlocksModes).map((whereSupportBlocksMode) => (
+              <option key={whereSupportBlocksMode.uniqueId} value={whereSupportBlocksMode.uniqueId}>
+                {getLocaleString(whereSupportBlocksMode.localeKey)}
+              </option>
+            ))}
+          </select>
+          <br />
           <b>
             {getLocaleString("MAP-SETTINGS/NBT-SPECIFIC/SUPPORT-BLOCK-TO-ADD")}
             {":"}

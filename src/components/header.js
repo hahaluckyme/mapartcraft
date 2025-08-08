@@ -21,12 +21,8 @@ class Header extends Component {
             GitHub
           </a>
           <span> | </span>
-          <a href="https://discord.gg/r7Tuerq" target="_blank" rel="noopener noreferrer">
-            2b2t Mapart Discord
-          </a>
-          <span> | </span>
-          <a href="https://area51.selfadjointoperator.com/mapartcraft/" target="_blank" rel="noopener noreferrer">
-            Beta
+          <a href="https://github.com/hahaluckyme/mapartcraft/blob/master/FEATURES.md" target="_blank" rel="noopener noreferrer">
+            New Features On This Page
           </a>
         </h3>
         <p>

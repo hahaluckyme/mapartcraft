@@ -17,6 +17,7 @@ import DefaultPresets from "./json/defaultPresets.json";
 import DitherMethods from "./json/ditherMethods.json";
 import MapModes from "./json/mapModes.json";
 import SupportedVersions from "./json/supportedVersions.json";
+import WhereSupportBlocksModes from "./json/whereSupportBlocksModes.json";
 
 import IMG_Upload from "../../images/upload.png";
 
@@ -39,6 +40,7 @@ class MapartController extends Component {
     optionValue_showOriginalBlocks: false,
     optionValue_showGridOverlay: false,
     optionValue_staircasing: MapModes.SCHEMATIC_NBT.staircaseModes.OFF.uniqueId,
+    optionValue_whereSupportBlocks: WhereSupportBlocksModes.ALL_OPTIMIZED.uniqueId,
     optionValue_supportBlock: "cobblestone",
     optionValue_transparency: false,
     optionValue_transparencyTolerance: 128,
@@ -374,6 +376,11 @@ class MapartController extends Component {
 
   onOptionChange_dithering_propagation_blue = (value) => {
     this.setState({ optionValue_dithering_propagation_blue: value });
+  };
+
+  onOptionChange_WhereSupportBlocks = (e) => {
+    const newValue = parseInt(e.target.value);
+    this.setState({ optionValue_whereSupportBlocks: newValue });
   };
 
   setOption_SupportBlock = (text) => {
@@ -782,6 +789,7 @@ class MapartController extends Component {
       optionValue_showOriginalBlocks,
       optionValue_pixelSize,
       optionValue_staircasing,
+      optionValue_whereSupportBlocks,
       optionValue_supportBlock,
       optionValue_transparency,
       optionValue_transparencyTolerance,
@@ -850,6 +858,7 @@ class MapartController extends Component {
             optionValue_showGridOverlay={optionValue_showGridOverlay}
             optionValue_pixelSize={optionValue_pixelSize}
             optionValue_staircasing={optionValue_staircasing}
+            optionValue_whereSupportBlocks={optionValue_whereSupportBlocks}
             optionValue_transparency={optionValue_transparency}
             optionValue_transparencyTolerance={optionValue_transparencyTolerance}
             optionValue_betterColour={optionValue_betterColour}
@@ -894,6 +903,8 @@ class MapartController extends Component {
               onOptionChange_pixelSize={this.onOptionChange_pixelSize}
               optionValue_staircasing={optionValue_staircasing}
               onOptionChange_staircasing={this.onOptionChange_staircasing}
+              optionValue_whereSupportBlocks={optionValue_whereSupportBlocks}
+              onOptionChange_WhereSupportBlocks={this.onOptionChange_WhereSupportBlocks}
               optionValue_supportBlock={optionValue_supportBlock}
               setOption_SupportBlock={this.setOption_SupportBlock}
               optionValue_transparency={optionValue_transparency}
@@ -942,6 +953,7 @@ class MapartController extends Component {
               optionValue_cropImage_percent_x={optionValue_cropImage_percent_x}
               optionValue_cropImage_percent_y={optionValue_cropImage_percent_y}
               optionValue_staircasing={optionValue_staircasing}
+              optionValue_whereSupportBlocks={optionValue_whereSupportBlocks}
               optionValue_supportBlock={optionValue_supportBlock}
               optionValue_transparency={optionValue_transparency}
               optionValue_transparencyTolerance={optionValue_transparencyTolerance}
