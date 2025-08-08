@@ -33,3 +33,13 @@ for bigger pixels, it is easier to place on servers without Litematica
 
 # 9. Map preview always stays on screen while selecting blocks
 ![image](https://github.com/user-attachments/assets/c86238f7-81e3-4c74-ba54-5b2b7575dcf8)
+
+# 10. Half-Staircasing
+cuts like half of the workload for doing a full-staircased map (i hate building downwards) while being about the same as the Full-Light or Full-Dark options
+
+example (NOT brightness-corrected):
+![image](https://github.com/user-attachments/assets/c444e042-d82d-4a8f-945d-3adb46655410)
+example photorealistic (NOT brightness-corrected):
+![image](https://github.com/user-attachments/assets/a8d4e793-7aa2-47b7-8c52-9198f4114500)
+comparison to full-3d:
+![image](https://github.com/user-attachments/assets/81a4ee70-8f6c-4a07-8fe3-abcef3eaea7a)
