@@ -1156,21 +1156,6 @@
                 "flammable": true,
                 "presetIndex": 7
             },
-            "8": {
-                "displayName": "Pink Petals",
-                "validVersions": {
-                    "1.20": {
-                        "NBTName": "pink_petals",
-                        "NBTArgs": {}
-                    },
-                    "1.21": "&1.20",
-                    "1.21.4": "&1.20",
-                    "1.21.5": "&1.20"
-                },
-                "supportBlockMandatory": true,
-                "flammable": true,
-                "presetIndex": 8
-            },
             "9": {
                 "displayName": "Wildflowers",
                 "validVersions": {
@@ -7121,7 +7106,7 @@
                 "supportBlockMandatory": false,
                 "flammable": false,
                 "presetIndex": 16
-            }            
+            }
         },
         "mapdatId": 29,
         "colourName": "Black Wool"
