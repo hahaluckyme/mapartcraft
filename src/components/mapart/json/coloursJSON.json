@@ -9330,7 +9330,7 @@
                 "presetIndex": 2
             },
             "3": {
-                "displayName": "Crimson Slab",
+                "displayName": "Crimson Slab (JAVA ONLY)",
                 "validVersions": {
                     "1.16.5": {
                         "NBTName": "crimson_slab",
@@ -9349,7 +9349,7 @@
                 "presetIndex": 3
             },
             "4": {
-                "displayName": "Crimson Pressure Plate",
+                "displayName": "Crimson Pressure Plate (JAVA ONLY)",
                 "validVersions": {
                     "1.16.5": {
                         "NBTName": "crimson_pressure_plate",
@@ -9604,7 +9604,7 @@
                 "presetIndex": 2
             },
             "3": {
-                "displayName": "Warped Slab",
+                "displayName": "Warped Slab (JAVA ONLY)",
                 "validVersions": {
                     "1.16.5": {
                         "NBTName": "warped_slab",
@@ -9661,7 +9661,7 @@
                 "presetIndex": 5
             },
             "6": {
-                "displayName": "Warped Pressure Plate",
+                "displayName": "Warped Pressure Plate (JAVA ONLY)",
                 "validVersions": {
                     "1.16.5": {
                         "NBTName": "warped_pressure_plate",
