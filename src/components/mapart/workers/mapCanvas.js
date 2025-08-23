@@ -365,6 +365,7 @@ function setupColourSetsToUse() {
 function setupExactColourCache() {
   // we do not care what staircasing option is selected etc as this does not matter
   // this is for exactly matching colours, whose values are never repeated in coloursJSON
+  // also RGB could be easily changed to RGBA if Mojang ever added absolute black #000000 and we need to distinguish it from transparent
   for (const [colourSetId, colourSet] of Object.entries(coloursJSON)) {
     for (const [toneKey, toneRGB] of Object.entries(colourSet.tonesRGB)) {
       const RGBBinary = (toneRGB[0] << 16) + (toneRGB[1] << 8) + toneRGB[2];
@@ -374,6 +375,11 @@ function setupExactColourCache() {
       });
     }
   }
+  exactColourCache.set(0, {
+    // special transparent for sticker mode
+    colourSetId: "-1",
+    tone: "normal",
+  });
 }
 
 function exactRGBToColourSetIdAndTone(pixelRGB) {
@@ -459,7 +465,6 @@ function getMapartImageDataAndMaterials() {
 
     let closestColourSetIdAndTone;
     if (
-      optionValue_modeNBTOrMapdat === MapModes.MAPDAT.uniqueId &&
       optionValue_transparency &&
       canvasImageData.data[indexA] < optionValue_transparencyTolerance
     ) {
@@ -711,7 +716,9 @@ function getMapartImageDataAndMaterials() {
                   canvasImageData.data[coloursBlock_index],
                   canvasImageData.data[coloursBlock_index + 1],
                   canvasImageData.data[coloursBlock_index + 2],
-                ]);
+                ]) || {
+                  tone: "dark",
+                };
                 const coloursBlock_south = closestColourSetIdAndTone;
                 if (
                   // first under-support block

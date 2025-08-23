@@ -338,66 +338,68 @@ class MapSettings extends Component {
           <br />
         </React.Fragment>
       );
-    } else {
-      let setting_transparency = (
+    }
+    let setting_transparency = (
+      <tr>
+        <th>
+          <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/TRANSPARENCY-TT")}>
+            <b>
+              {getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/TRANSPARENCY")}
+              {":"}
+            </b>
+          </Tooltip>{" "}
+        </th>
+        <td>
+          <input type="checkbox" checked={optionValue_transparency} onChange={onOptionChange_transparency} />
+        </td>
+        <td />
+      </tr>
+    );
+    let setting_transparencyTolerance = null;
+    if (optionValue_transparency) {
+      setting_transparencyTolerance = (
         <tr>
           <th>
-            <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/TRANSPARENCY-TT")}>
-              <b>
-                {getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/TRANSPARENCY")}
-                {":"}
-              </b>
-            </Tooltip>{" "}
+            <b>
+              {getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/TRANSPARENCY-TOLERANCE")}
+              {":"}
+            </b>{" "}
           </th>
           <td>
-            <input type="checkbox" checked={optionValue_transparency} onChange={onOptionChange_transparency} />
+            <input
+              type="range"
+              min="0"
+              max="256"
+              value={optionValue_transparencyTolerance}
+              onChange={(e) => onOptionChange_transparencyTolerance(parseInt(e.target.value))}
+            />
           </td>
-          <td />
+          <td>
+            <BufferedNumberInput
+              min="0"
+              max="256"
+              step="1"
+              value={optionValue_transparencyTolerance}
+              validators={[(t) => !isNaN(t), (t) => t >= 0, (t) => t <= 256]}
+              onValidInput={onOptionChange_transparencyTolerance}
+              style={{ width: "3em" }}
+            />
+          </td>
         </tr>
       );
-      let setting_transparencyTolerance = null;
-      if (optionValue_transparency) {
-        setting_transparencyTolerance = (
-          <tr>
-            <th>
-              <b>
-                {getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/TRANSPARENCY-TOLERANCE")}
-                {":"}
-              </b>{" "}
-            </th>
-            <td>
-              <input
-                type="range"
-                min="0"
-                max="256"
-                value={optionValue_transparencyTolerance}
-                onChange={(e) => onOptionChange_transparencyTolerance(parseInt(e.target.value))}
-              />
-            </td>
-            <td>
-              <BufferedNumberInput
-                min="0"
-                max="256"
-                step="1"
-                value={optionValue_transparencyTolerance}
-                validators={[(t) => !isNaN(t), (t) => t >= 0, (t) => t <= 256]}
-                onValidInput={onOptionChange_transparencyTolerance}
-                style={{ width: "3em" }}
-              />
-            </td>
-          </tr>
-        );
-      }
-      let settingGroup_transparency = (
-        <div className={optionValue_transparency ? "settingsGroup" : null}>
-          <table>
-            <tbody>
-              {setting_transparency}
-              {setting_transparencyTolerance}
-            </tbody>
-          </table>
-        </div>
-      );
+    }
+    let settingGroup_transparency = (
+      <div className={optionValue_transparency ? "settingsGroup" : null}>
+        <table>
+          <tbody>
+            {setting_transparency}
+            {setting_transparencyTolerance}
+          </tbody>
+        </table>
+      </div>
+    );
+
+    if (optionValue_modeNBTOrMapdat === MapModes.MAPDAT.uniqueId) {
       let setting_mapdatFilenameUseId = (
         <tr>
           <th>
@@ -460,7 +462,6 @@ class MapSettings extends Component {
       );
       settings_mapModeConditional = (
         <React.Fragment>
-          {settingGroup_transparency}
           {settingGroup_mapdatFilename}
         </React.Fragment>
       );
@@ -812,6 +813,7 @@ class MapSettings extends Component {
         {setting_pixelSize}
         {setting_grid}
         {setting_staircasing}
+        {settingGroup_transparency}
         {settings_mapModeConditional}
         {setting_betterColour}
         {setting_dithering}

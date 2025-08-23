@@ -40,7 +40,7 @@ class MapartController extends Component {
     optionValue_showOriginalBlocks: false,
     optionValue_showGridOverlay: false,
     optionValue_staircasing: MapModes.SCHEMATIC_NBT.staircaseModes.OFF.uniqueId,
-    optionValue_whereSupportBlocks: WhereSupportBlocksModes.ALL_OPTIMIZED.uniqueId,
+    optionValue_whereSupportBlocks: WhereSupportBlocksModes.NONE.uniqueId,
     optionValue_supportBlock: "cobblestone",
     optionValue_transparency: false,
     optionValue_transparencyTolerance: 128,
