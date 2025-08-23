@@ -14,6 +14,7 @@ var optionValue_whereSupportBlocks;
 var pixelsData;
 var maps;
 var currentSelectedBlocks;
+var hasTransparent;
 // end onmessage variables
 
 var exactColourCache = new Map(); // for mapping RGB that exactly matches in coloursJSON to colourSetId and tone
@@ -368,9 +369,15 @@ class Map_NBT {
     let currentHeight;
     switch (optionValue_staircasing) {
       case MapModes.SCHEMATIC_NBT.staircaseModes.OFF.uniqueId: {
-        // start at y = 2 for flat maps; this covers the cases of support blocks 1 and or 2 blocks below
-        currentHeight = 2;
-        break;
+        if (optionValue_whereSupportBlocks === WhereSupportBlocksModes.NONE.uniqueId) {
+          // yeah if theres no support blocks then who cares about underneath
+          currentHeight = 0;
+          break;
+        } else {
+          // start at y = 2 for flat maps; this covers the cases of support blocks 1 and or 2 blocks below
+          currentHeight = 2;
+          break;
+        }
       }
       case MapModes.SCHEMATIC_NBT.staircaseModes.CLASSIC.uniqueId:
       case MapModes.SCHEMATIC_NBT.staircaseModes.VALLEY.uniqueId:
@@ -841,7 +848,6 @@ onmessage = (e) => {
   pixelsData = e.data.body.pixelsData;
   maps = e.data.body.maps;
   currentSelectedBlocks = e.data.body.currentSelectedBlocks;
-
   const headerMessage = e.data.head;
 
   setupExactColourCache();
