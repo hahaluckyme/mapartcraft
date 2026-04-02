@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/mapartcraft/static/css/main.3e581d53.css",
-    "main.js": "/mapartcraft/static/js/main.b7a3c6ec.js",
-    "static/media/textures.png": "/mapartcraft/static/media/textures.f0858a19b893ac7a2935.png",
+    "main.js": "/mapartcraft/static/js/main.97778874.js",
+    "static/media/textures.png": "/mapartcraft/static/media/textures.aad727cdc8ba16469609.png",
     "static/media/classicVsValley.png": "/mapartcraft/static/media/classicVsValley.fb0924c8c55083db0fa2.png",
     "static/media/kenpixel_mini_square.woff": "/mapartcraft/static/media/kenpixel_mini_square.049f97fdc3d085c627b3.woff",
     "static/media/flag_pop.svg": "/mapartcraft/static/media/flag_pop.4141ec111e2e523c0eed5b2f7a4967f1.svg",
     "index.html": "/mapartcraft/index.html",
     "static/media/flag.svg": "/mapartcraft/static/media/flag.ea665cae728ab5d88c0da3fa47a0dffa.svg",
     "main.3e581d53.css.map": "/mapartcraft/static/css/main.3e581d53.css.map",
-    "main.b7a3c6ec.js.map": "/mapartcraft/static/js/main.b7a3c6ec.js.map"
+    "main.97778874.js.map": "/mapartcraft/static/js/main.97778874.js.map"
   },
   "entrypoints": [
     "static/css/main.3e581d53.css",
-    "static/js/main.b7a3c6ec.js"
+    "static/js/main.97778874.js"
   ]
 }
