@@ -9515,6 +9515,44 @@
                 "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 2
+            },
+            "3": {
+                "displayName": "Waxed Oxidized Copper",
+                "validVersions": {
+                    "1.17.1": {
+                        "NBTName": "waxed_oxidized_copper",
+                        "NBTArgs": {}
+                    },
+                    "1.18.2": "&1.17.1",
+                    "1.19": "&1.17.1",
+                    "1.20": "&1.17.1",
+                    "1.21": "&1.17.1",
+                    "1.21.4": "&1.17.1",
+                    "1.21.5": "&1.17.1"
+                },
+                "hidden": true,
+                "supportBlockMandatory": false,
+                "flammable": false,
+                "presetIndex": 3
+            },
+            "4": {
+                "displayName": "Waxed Oxidized Cut Copper Slab",
+                "validVersions": {
+                    "1.17.1": {
+                        "NBTName": "waxed_oxidized_cut_copper_slab",
+                        "NBTArgs": {}
+                    },
+                    "1.18.2": "&1.17.1",
+                    "1.19": "&1.17.1",
+                    "1.20": "&1.17.1",
+                    "1.21": "&1.17.1",
+                    "1.21.4": "&1.17.1",
+                    "1.21.5": "&1.17.1"
+                },
+                "hidden": true,
+                "supportBlockMandatory": true,
+                "flammable": false,
+                "presetIndex": 4
             }
         },
         "mapdatId": 55,
