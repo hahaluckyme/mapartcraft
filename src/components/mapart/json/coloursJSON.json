@@ -9530,7 +9530,6 @@
                     "1.21.4": "&1.17.1",
                     "1.21.5": "&1.17.1"
                 },
-                "hidden": true,
                 "supportBlockMandatory": false,
                 "flammable": false,
                 "presetIndex": 3
@@ -9549,7 +9548,6 @@
                     "1.21.4": "&1.17.1",
                     "1.21.5": "&1.17.1"
                 },
-                "hidden": true,
                 "supportBlockMandatory": true,
                 "flammable": false,
                 "presetIndex": 4
