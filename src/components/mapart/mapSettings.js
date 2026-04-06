@@ -51,6 +51,8 @@ class MapSettings extends Component {
       onOptionChange_transparency,
       optionValue_transparencyTolerance,
       onOptionChange_transparencyTolerance,
+      optionValue_includeBackground,
+      onOptionChange_includeBackground,
       optionValue_mapdatFilenameUseId,
       onOptionChange_mapdatFilenameUseId,
       optionValue_mapdatFilenameIdStart,
@@ -356,6 +358,7 @@ class MapSettings extends Component {
       </tr>
     );
     let setting_transparencyTolerance = null;
+    let setting_includeBackground = null;
     if (optionValue_transparency) {
       setting_transparencyTolerance = (
         <tr>
@@ -387,6 +390,22 @@ class MapSettings extends Component {
           </td>
         </tr>
       );
+      setting_includeBackground = (
+        <tr>
+          <th>
+            <Tooltip tooltipText={getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/INCLUDE-BACKGROUND-TT")}>
+              <b>
+                {getLocaleString("MAP-SETTINGS/MAPDAT-SPECIFIC/INCLUDE-BACKGROUND")}
+                {":"}
+              </b>
+            </Tooltip>{" "}
+          </th>
+          <td>
+            <input type="checkbox" checked={optionValue_includeBackground} onChange={onOptionChange_includeBackground} />
+          </td>
+          <td />
+        </tr>
+      );
     }
     let settingGroup_transparency = (
       <div className={optionValue_transparency ? "settingsGroup" : null}>
@@ -394,6 +413,7 @@ class MapSettings extends Component {
           <tbody>
             {setting_transparency}
             {setting_transparencyTolerance}
+            {setting_includeBackground}
           </tbody>
         </table>
       </div>

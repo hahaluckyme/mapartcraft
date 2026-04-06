@@ -44,6 +44,7 @@ class MapartController extends Component {
     optionValue_supportBlock: "cobblestone",
     optionValue_transparency: false,
     optionValue_transparencyTolerance: 128,
+    optionValue_includeBackground: false,
     optionValue_mapdatFilenameUseId: true,
     optionValue_mapdatFilenameIdStart: 0,
     optionValue_betterColour: ColourMethods.Ciede2000_Lab65.uniqueId,
@@ -331,15 +332,21 @@ class MapartController extends Component {
   };
 
   onOptionChange_transparency = () => {
-    this.setState({
-      optionValue_transparency: !this.state.optionValue_transparency,
-    });
+    this.setState((state) => ({
+      optionValue_transparency: !state.optionValue_transparency,
+    }));
   };
 
   onOptionChange_transparencyTolerance = (value) => {
     this.setState({
       optionValue_transparencyTolerance: value,
     });
+  };
+
+  onOptionChange_includeBackground = () => {
+    this.setState((state) => ({
+      optionValue_includeBackground: !state.optionValue_includeBackground,
+    }));
   };
 
   onOptionChange_mapdatFilenameUseId = () => {
@@ -793,6 +800,7 @@ class MapartController extends Component {
       optionValue_supportBlock,
       optionValue_transparency,
       optionValue_transparencyTolerance,
+      optionValue_includeBackground,
       optionValue_mapdatFilenameUseId,
       optionValue_mapdatFilenameIdStart,
       optionValue_betterColour,
@@ -861,6 +869,7 @@ class MapartController extends Component {
             optionValue_whereSupportBlocks={optionValue_whereSupportBlocks}
             optionValue_transparency={optionValue_transparency}
             optionValue_transparencyTolerance={optionValue_transparencyTolerance}
+            optionValue_includeBackground={optionValue_includeBackground}
             optionValue_betterColour={optionValue_betterColour}
             optionValue_dithering={optionValue_dithering}
             optionValue_dithering_propagation_red={optionValue_dithering_propagation_red}
@@ -911,6 +920,8 @@ class MapartController extends Component {
               onOptionChange_transparency={this.onOptionChange_transparency}
               optionValue_transparencyTolerance={optionValue_transparencyTolerance}
               onOptionChange_transparencyTolerance={this.onOptionChange_transparencyTolerance}
+              optionValue_includeBackground={optionValue_includeBackground}
+              onOptionChange_includeBackground={this.onOptionChange_includeBackground}
               optionValue_mapdatFilenameUseId={optionValue_mapdatFilenameUseId}
               onOptionChange_mapdatFilenameUseId={this.onOptionChange_mapdatFilenameUseId}
               optionValue_mapdatFilenameIdStart={optionValue_mapdatFilenameIdStart}
@@ -957,6 +968,7 @@ class MapartController extends Component {
               optionValue_supportBlock={optionValue_supportBlock}
               optionValue_transparency={optionValue_transparency}
               optionValue_transparencyTolerance={optionValue_transparencyTolerance}
+              optionValue_includeBackground={optionValue_includeBackground}
               optionValue_mapdatFilenameUseId={optionValue_mapdatFilenameUseId}
               optionValue_mapdatFilenameIdStart={optionValue_mapdatFilenameIdStart}
               optionValue_betterColour={optionValue_betterColour}

@@ -18,6 +18,8 @@ var optionValue_staircasing;
 var optionValue_whereSupportBlocks;
 var optionValue_transparency;
 var optionValue_transparencyTolerance;
+var optionValue_includeBackground;
+var backgroundColorReference = null;
 var optionValue_betterColour;
 var optionValue_dithering;
 var optionValue_dithering_propagation_red;
@@ -464,18 +466,23 @@ function getMapartImageDataAndMaterials() {
     }
 
     let closestColourSetIdAndTone;
-    if (
-      optionValue_transparency &&
-      canvasImageData.data[indexA] < optionValue_transparencyTolerance
-    ) {
-      // we specially reserve 0,0,0,0 for transparent in mapdats
-      canvasImageData.data[indexR] = 0;
-      canvasImageData.data[indexG] = 0;
-      canvasImageData.data[indexB] = 0;
+    const pixelR = canvasImageData.data[indexR];
+    const pixelG = canvasImageData.data[indexG];
+    const pixelB = canvasImageData.data[indexB];
+    const pixelA = canvasImageData.data[indexA];
+    const isTransparent = optionValue_transparency && pixelA < optionValue_transparencyTolerance;
+    const isBackground =
+      optionValue_includeBackground &&
+      backgroundColorReference !== null &&
+      Math.abs(pixelR - backgroundColorReference[0]) < optionValue_transparencyTolerance &&
+      Math.abs(pixelG - backgroundColorReference[1]) < optionValue_transparencyTolerance &&
+      Math.abs(pixelB - backgroundColorReference[2]) < optionValue_transparencyTolerance;
+    const shouldBeTransparent = isTransparent || isBackground;
+    if (shouldBeTransparent) {
       canvasImageData.data[indexA] = 0;
     } else {
       canvasImageData.data[indexA] = 255; // full opacity
-      const oldPixel = [canvasImageData.data[indexR], canvasImageData.data[indexG], canvasImageData.data[indexB]];
+      const oldPixel = [pixelR, pixelG, pixelB];
       switch (chosenDitherMethod.uniqueId) {
         // Switch statement that checks the dither method every pixel;
         // I have tested a refactor that only checks once however the time difference is negligible and code quality deteriorates
@@ -802,7 +809,16 @@ onmessage = (e) => {
   optionValue_whereSupportBlocks = e.data.body.optionValue_whereSupportBlocks;
   optionValue_transparency = e.data.body.optionValue_transparency;
   optionValue_transparencyTolerance = e.data.body.optionValue_transparencyTolerance;
+  optionValue_includeBackground = e.data.body.optionValue_includeBackground;
   optionValue_betterColour = e.data.body.optionValue_betterColour;
+
+  if (optionValue_includeBackground) {
+    backgroundColorReference = [
+      canvasImageData.data[0],
+      canvasImageData.data[1],
+      canvasImageData.data[2],
+    ];
+  }
   optionValue_dithering = e.data.body.optionValue_dithering;
   optionValue_dithering_propagation_red = e.data.body.optionValue_dithering_propagation_red;
   optionValue_dithering_propagation_green = e.data.body.optionValue_dithering_propagation_green;

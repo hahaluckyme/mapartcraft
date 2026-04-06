@@ -127,6 +127,8 @@
       "TRANSPARENCY": "Transparency",
       "TRANSPARENCY-TT": "Enables transparency for map.dat (PRO USERS ONLY)",
       "TRANSPARENCY-TOLERANCE": "Tolerance",
+      "INCLUDE-BACKGROUND": "Include Background",
+      "INCLUDE-BACKGROUND-TT": "Treat background color as transparent using top-left pixel as reference",
       "MAPDAT-FILENAME-USE-ID": "Numerical Filename",
       "MAPDAT-FILENAME-USE-ID-TT": "Save mapdats as 'map_#.dat'",
       "MAPDAT-FILENAME-ID-RANGE": "Range"
